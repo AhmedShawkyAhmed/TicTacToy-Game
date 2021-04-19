@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/TicTacToy.iml" filepath="$PROJECT_DIR$/.idea/TicTacToy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tic_tac_toy.iml" filepath="$PROJECT_DIR$/tic_tac_toy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/tic_tac_toy_android.iml" filepath="$PROJECT_DIR$/android/tic_tac_toy_android.iml" />
     </modules>
   </component>
 </project>
