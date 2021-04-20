@@ -26,7 +26,7 @@ class _PlayState extends State<Play> {
   int draw = 1;
 
   // ignore: non_constant_identifier_names
-  Color TextColor = Colors.white;
+  Color TextColor = Colors.blue.shade500;
 
   // ignore: non_constant_identifier_names
   Color Background = Colors.black;
