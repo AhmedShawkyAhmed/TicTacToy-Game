@@ -22,7 +22,7 @@ class _PlayState extends State<Play> {
   int oScore = 0;
   int xScore = 0;
   int filledBoxes = 0;
-  var currentPlayer;
+  var currentPlayer = 'O';
   int draw = 1;
 
   // ignore: non_constant_identifier_names
@@ -30,12 +30,6 @@ class _PlayState extends State<Play> {
 
   // ignore: non_constant_identifier_names
   Color Background = Colors.black;
-
-  @override
-  // ignore: must_call_super
-  void initState() {
-    _currentplayer();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,62 +116,56 @@ class _PlayState extends State<Play> {
           Expanded(
             flex: 3,
             child: GridView.builder(
-                itemCount: 9,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      _tapped(index);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: TextColor,
-                        ),
+              itemCount: 9,
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    _tapped(index);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: TextColor,
                       ),
-                      child: Center(
-                        child: Text(
-                          displayExOh[index],
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                          ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        displayExOh[index],
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
                         ),
                       ),
                     ),
-                  );
-                }),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 
-  void _currentplayer() {
-    setState(() {
-      if (ohTurn) {
-        currentPlayer = 'O';
-      } else if (!ohTurn) {
-        currentPlayer = 'X';
-      }
-    });
-  }
-
   void _tapped(int index) {
-    setState(() {
-      if (ohTurn && displayExOh[index] == '') {
-        displayExOh[index] = 'O';
-        filledBoxes += 1;
-      } else if (!ohTurn && displayExOh[index] == '') {
-        displayExOh[index] = 'X';
-        filledBoxes += 1;
-      }
-
-      ohTurn = !ohTurn;
-      _checkWinner();
-      _currentplayer();
-    });
+    setState(
+      () {
+        if (ohTurn && displayExOh[index] == '') {
+          displayExOh[index] = 'O';
+          filledBoxes += 1;
+          currentPlayer = 'X';
+          ohTurn = !ohTurn;
+        } else if (!ohTurn && displayExOh[index] == '') {
+          displayExOh[index] = 'X';
+          filledBoxes += 1;
+          currentPlayer = 'O';
+          ohTurn = !ohTurn;
+        }
+        _checkWinner();
+      },
+    );
   }
 
   void _checkWinner() {
@@ -252,68 +240,70 @@ class _PlayState extends State<Play> {
 
   void _showDrawDialog() {
     showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: TextColor,
-            title: Text(
-              'DRAW 😐',
-              style: TextStyle(
-                color: Background,
-              ),
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: TextColor,
+          title: Text(
+            'DRAW 😐',
+            style: TextStyle(
+              color: Background,
             ),
-            actions: <Widget>[
-              // ignore: deprecated_member_use
-              FlatButton(
-                child: Text(
-                  'Play Again!',
-                  style: TextStyle(
-                    color: Background,
-                  ),
+          ),
+          actions: <Widget>[
+            // ignore: deprecated_member_use
+            FlatButton(
+              child: Text(
+                'Play Again!',
+                style: TextStyle(
+                  color: Background,
                 ),
-                onPressed: () {
-                  _clearBoard();
-                  Navigator.of(context).pop();
-                  draw = 1;
-                },
-              )
-            ],
-          );
-        });
+              ),
+              onPressed: () {
+                _clearBoard();
+                Navigator.of(context).pop();
+                draw = 1;
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 
   void _showWinDialog(String winner) {
     showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: TextColor,
-            title: Text(
-              'WINNER IS: $winner 🎉',
-              style: TextStyle(
-                color: Background,
-              ),
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: TextColor,
+          title: Text(
+            'WINNER IS: $winner 🎉',
+            style: TextStyle(
+              color: Background,
             ),
-            actions: <Widget>[
-              // ignore: deprecated_member_use
-              FlatButton(
-                child: Text(
-                  'Play Again!',
-                  style: TextStyle(
-                    color: Background,
-                  ),
+          ),
+          actions: <Widget>[
+            // ignore: deprecated_member_use
+            FlatButton(
+              child: Text(
+                'Play Again!',
+                style: TextStyle(
+                  color: Background,
                 ),
-                onPressed: () {
-                  _clearBoard();
-                  Navigator.of(context).pop();
-                  draw = 1;
-                },
-              )
-            ],
-          );
-        });
+              ),
+              onPressed: () {
+                _clearBoard();
+                Navigator.of(context).pop();
+                draw = 1;
+              },
+            )
+          ],
+        );
+      },
+    );
 
     if (winner == 'O') {
       oScore += 1;
@@ -323,12 +313,13 @@ class _PlayState extends State<Play> {
   }
 
   void _clearBoard() {
-    setState(() {
-      for (int i = 0; i < 9; i++) {
-        displayExOh[i] = '';
-      }
-    });
-
+    setState(
+      () {
+        for (int i = 0; i < 9; i++) {
+          displayExOh[i] = '';
+        }
+      },
+    );
     filledBoxes = 0;
   }
 }
