@@ -20,104 +20,105 @@ class _IntroScreenState extends State<IntroScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Background,
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60.0),
-                    child: Container(
-                      child: Text(
-                        "Tic Tac Toy",
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: TextColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
+        backgroundColor: Background,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60.0),
                   child: Container(
-                    child: AvatarGlow(
-                      endRadius: 140,
-                      duration: Duration(seconds: 3),
-                      glowColor: TextColor,
-                      repeat: true,
-                      repeatPauseDuration: Duration(seconds: 1),
-                      startDelay: Duration(seconds: 1),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              style: BorderStyle.none,
-                            ),
-                            shape: BoxShape.circle),
-                        child: CircleAvatar(
-                          backgroundColor: Background,
-                          child: Container(
-                            child: Image.asset(
-                              'lib/logo.png',
-                              color: TextColor,
-                              fit: BoxFit.scaleDown,
-                            ),
-                          ),
-                          radius: 80.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 50.0),
-                    child: Container(
-                      child: Text(
-                        "@ Ahmed Shawky",
-                        style: TextStyle(
-                          fontSize: 40,
-                          color: TextColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Play()),
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: 40,
-                      right: 40,
-                      bottom: 60,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        padding: EdgeInsets.all(30),
+                    child: Text(
+                      "Tic Tac Toy",
+                      style: TextStyle(
+                        fontSize: 50,
                         color: TextColor,
-                        child: Center(
-                          child: Text(
-                            'PLAY GAME',
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Background,
-                            ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: AvatarGlow(
+                    endRadius: 140,
+                    duration: Duration(seconds: 3),
+                    glowColor: TextColor,
+                    repeat: true,
+                    repeatPauseDuration: Duration(seconds: 1),
+                    startDelay: Duration(seconds: 1),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            style: BorderStyle.none,
+                          ),
+                          shape: BoxShape.circle),
+                      child: CircleAvatar(
+                        backgroundColor: Background,
+                        child: Container(
+                          child: Image.asset(
+                            'lib/logo.png',
+                            color: TextColor,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        radius: 80.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50.0),
+                  child: Container(
+                    child: Text(
+                      "@ Ahmed Shawky",
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: TextColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Play()),
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 40,
+                    right: 40,
+                    bottom: 60,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(30),
+                      color: TextColor,
+                      child: Center(
+                        child: Text(
+                          'PLAY GAME',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Background,
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-          )),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
