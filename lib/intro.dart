@@ -10,7 +10,7 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen>
     with SingleTickerProviderStateMixin {
   // ignore: non_constant_identifier_names
-  Color TextColor = Colors.white;
+  Color TextColor = Colors.blue.shade500;
 
   // ignore: non_constant_identifier_names
   Color Background = Colors.black;
@@ -27,7 +27,7 @@ class _IntroScreenState extends State<IntroScreen>
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 90.0),
+                    padding: const EdgeInsets.only(top: 60.0),
                     child: Container(
                       child: Text(
                         "Tic Tac Toy",
@@ -72,7 +72,7 @@ class _IntroScreenState extends State<IntroScreen>
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 80.0),
+                    padding: const EdgeInsets.only(top: 50.0),
                     child: Container(
                       child: Text(
                         "@ Ahmed Shawky",
