@@ -57,7 +57,7 @@ class _PlayState extends State<Play> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Player ( O )',
+                          'Player O ',
                           style: TextStyle(
                             color: TextColor,
                             fontSize: 25,
@@ -83,7 +83,7 @@ class _PlayState extends State<Play> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Player ( X )',
+                          'Player X ',
                           style: TextStyle(
                             color: TextColor,
                             fontSize: 25,
@@ -245,7 +245,7 @@ class _PlayState extends State<Play> {
       draw = 0;
     }
     // check draw
-    if (filledBoxes == 9) {
+    if (filledBoxes == 9 && draw == 1) {
       _showDrawDialog();
     }
   }
@@ -275,6 +275,7 @@ class _PlayState extends State<Play> {
                 onPressed: () {
                   _clearBoard();
                   Navigator.of(context).pop();
+                  draw = 1;
                 },
               )
             ],
@@ -307,6 +308,7 @@ class _PlayState extends State<Play> {
                 onPressed: () {
                   _clearBoard();
                   Navigator.of(context).pop();
+                  draw = 1;
                 },
               )
             ],
