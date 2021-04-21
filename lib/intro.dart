@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toy/play.dart';
+import 'package:tic_tac_toy/players.dart';
+import 'package:tic_tac_toy/solo.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -88,6 +89,37 @@ class _IntroScreenState extends State<IntroScreen>
                 onTap: () {
                   Navigator.push(
                     context,
+                    MaterialPageRoute(builder: (context) => Solo()),
+                  );
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 40,
+                    right: 40,
+                    bottom: 20,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      color: TextColor,
+                      child: Center(
+                        child: Text(
+                          '1 Player',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Background,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(builder: (context) => Play()),
                   );
                 },
@@ -95,16 +127,16 @@ class _IntroScreenState extends State<IntroScreen>
                   padding: EdgeInsets.only(
                     left: 40,
                     right: 40,
-                    bottom: 60,
+                    bottom: 40,
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(20),
                       color: TextColor,
                       child: Center(
                         child: Text(
-                          'PLAY GAME',
+                          '2 Players',
                           style: TextStyle(
                             fontSize: 30,
                             color: Background,
