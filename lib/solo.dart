@@ -155,9 +155,10 @@ class _SoloState extends State<Solo> {
       () {
         Random random = new Random();
         int range = random.nextInt(10) + 1;
-        if (displayExOh[range] == '') {
+        if (!ohTurn && displayExOh[range] == '') {
           displayExOh[range] = 'X';
           filledBoxes += 1;
+          ohTurn = !ohTurn;
         }
       },
     );
@@ -166,9 +167,10 @@ class _SoloState extends State<Solo> {
   void _tapped(int index) {
     setState(
       () {
-        if (displayExOh[index] == '') {
+        if (ohTurn && displayExOh[index] == '') {
           displayExOh[index] = 'O';
           filledBoxes += 1;
+          ohTurn = !ohTurn;
         }
         _autoplay();
         _checkWinner();
