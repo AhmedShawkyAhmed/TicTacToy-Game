@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Solo extends StatefulWidget {
   @override
@@ -118,7 +119,7 @@ class _SoloState extends State<Solo> {
             child: GridView.builder(
               itemCount: 9,
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
@@ -149,20 +150,27 @@ class _SoloState extends State<Solo> {
     );
   }
 
+  void _autoplay() {
+    setState(
+      () {
+        Random random = new Random();
+        int range = random.nextInt(10) + 1;
+        if (displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+        }
+      },
+    );
+  }
+
   void _tapped(int index) {
     setState(
-          () {
-        if (ohTurn && displayExOh[index] == '') {
+      () {
+        if (displayExOh[index] == '') {
           displayExOh[index] = 'O';
           filledBoxes += 1;
-          currentPlayer = 'X';
-          ohTurn = !ohTurn;
-        } else if (!ohTurn && displayExOh[index] == '') {
-          displayExOh[index] = 'X';
-          filledBoxes += 1;
-          currentPlayer = 'O';
-          ohTurn = !ohTurn;
         }
+        _autoplay();
         _checkWinner();
       },
     );
@@ -314,7 +322,7 @@ class _SoloState extends State<Solo> {
 
   void _clearBoard() {
     setState(
-          () {
+      () {
         for (int i = 0; i < 9; i++) {
           displayExOh[i] = '';
         }
