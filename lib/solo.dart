@@ -155,11 +155,8 @@ class _SoloState extends State<Solo> {
       () {
         Random random = new Random();
         int range = random.nextInt(10) + 1;
-        if (!ohTurn && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          ohTurn = !ohTurn;
-        }
+        displayExOh[range] = 'X';
+        filledBoxes += 1;
       },
     );
   }
@@ -170,9 +167,9 @@ class _SoloState extends State<Solo> {
         if (ohTurn && displayExOh[index] == '') {
           displayExOh[index] = 'O';
           filledBoxes += 1;
-          ohTurn = !ohTurn;
+          _autoplay();
         }
-        _autoplay();
+
         _checkWinner();
       },
     );
@@ -274,6 +271,7 @@ class _SoloState extends State<Solo> {
                 _clearBoard();
                 Navigator.of(context).pop();
                 draw = 1;
+                currentPlayer = 'O';
               },
             )
           ],
@@ -308,6 +306,7 @@ class _SoloState extends State<Solo> {
                 _clearBoard();
                 Navigator.of(context).pop();
                 draw = 1;
+                currentPlayer = 'O';
               },
             )
           ],
