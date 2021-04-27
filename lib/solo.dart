@@ -151,12 +151,55 @@ class _SoloState extends State<Solo> {
   }
 
   void _autoplay() {
+    Random random = new Random();
+    int range = random.nextInt(10) + 1;
     setState(
       () {
-        Random random = new Random();
-        int range = random.nextInt(10) + 1;
-        displayExOh[range] = 'X';
-        filledBoxes += 1;
+        if (displayExOh[0] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[1] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[2] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[3] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[4] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[5] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[6] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[7] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
+        if (displayExOh[8] == 'O' && displayExOh[range] == '') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          draw = 0;
+        }
       },
     );
   }
@@ -169,7 +212,6 @@ class _SoloState extends State<Solo> {
           filledBoxes += 1;
           _autoplay();
         }
-
         _checkWinner();
       },
     );
@@ -271,7 +313,6 @@ class _SoloState extends State<Solo> {
                 _clearBoard();
                 Navigator.of(context).pop();
                 draw = 1;
-                currentPlayer = 'O';
               },
             )
           ],
@@ -306,7 +347,6 @@ class _SoloState extends State<Solo> {
                 _clearBoard();
                 Navigator.of(context).pop();
                 draw = 1;
-                currentPlayer = 'O';
               },
             )
           ],
