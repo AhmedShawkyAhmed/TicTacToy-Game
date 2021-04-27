@@ -150,67 +150,24 @@ class _SoloState extends State<Solo> {
     );
   }
 
-  void _autoplay() {
-    Random random = new Random();
-    int range = random.nextInt(10) + 1;
-    setState(
-      () {
-        if (displayExOh[0] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[1] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[2] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[3] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[4] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[5] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[6] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[7] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-        if (displayExOh[8] == 'O' && displayExOh[range] == '') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          draw = 0;
-        }
-      },
-    );
-  }
-
   void _tapped(int index) {
     setState(
       () {
+        Random random = new Random();
+        int range = random.nextInt(10) + 1;
         if (ohTurn && displayExOh[index] == '') {
           displayExOh[index] = 'O';
           filledBoxes += 1;
-          _autoplay();
+          ohTurn = !ohTurn;
+        }
+        if (!ohTurn && displayExOh[range] != 'O' && displayExOh[range] != 'X') {
+          displayExOh[range] = 'X';
+          filledBoxes += 1;
+          ohTurn = !ohTurn;
+        }else{
+          displayExOh[range+1] = 'X';
+          filledBoxes += 1;
+          ohTurn = !ohTurn;
         }
         _checkWinner();
       },
