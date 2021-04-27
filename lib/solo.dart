@@ -150,24 +150,26 @@ class _SoloState extends State<Solo> {
     );
   }
 
+  void _auto() {
+    setState(() {
+      Random random = new Random();
+      int range = random.nextInt(10) + 1;
+      if (!ohTurn && displayExOh[range] == '') {
+        displayExOh[range] = 'X';
+        filledBoxes += 1;
+        ohTurn = !ohTurn;
+      }
+    });
+  }
+
   void _tapped(int index) {
     setState(
       () {
-        Random random = new Random();
-        int range = random.nextInt(10) + 1;
         if (ohTurn && displayExOh[index] == '') {
           displayExOh[index] = 'O';
           filledBoxes += 1;
           ohTurn = !ohTurn;
-        }
-        if (!ohTurn && displayExOh[range] != 'O' && displayExOh[range] != 'X') {
-          displayExOh[range] = 'X';
-          filledBoxes += 1;
-          ohTurn = !ohTurn;
-        }else{
-          displayExOh[range+1] = 'X';
-          filledBoxes += 1;
-          ohTurn = !ohTurn;
+          _auto();
         }
         _checkWinner();
       },
