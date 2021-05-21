@@ -1,7 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toy/players.dart';
-import 'package:tic_tac_toy/solo.dart';
+import 'package:tic_tac_toe/players.dart';
+import 'package:tic_tac_toe/solo.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
